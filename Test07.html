@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Hello world</title>
+        <script src="../libraries/scripts/1.6.4/angular.min.js"></script>
+    </head>
+    <body ng-app="docisolatescopedirect">
+        <div ng-controller = "mycontroller">
+            <my-customer man="nami"></my-customer>
+            <hr>
+            <my-customer man ="igor"></my-customer>
+        </div>
+        
+        <script type="text/javascript">
+            var app =angular.module('docisolatescopedirect',[]);
+            app.controller('mycontroller',['$scope',function($scope){
+                $scope.nami = {name:'Nami', address:'1600 amphithetre'};
+                $scope.igor = {name:'Igor', address:'123 somewhere'};
+            }])
+            .directive('myCustomer',function(){
+                return{
+                    restrict :'E',
+                    scope:{
+                        customerinfor:'=man'
+                    },
+                    template:'<h1>Name:{{customerinfor.name}} address:{{customerinfor.address}} </h1>'
+                }
+            })
+        </script>
+    </body>
+</html>

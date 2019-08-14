@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Hello world</title>
+        <script src="../libraries/scripts/1.6.4/angular.min.js"></script>
+            <script src="Test05.js"></script>
+    </head>
+    <body ng-app="scopeEvent">
+        <div ng-controller = "MainController">
+            parent scope<tt> myevent</tt>count :{{count}}
+            <div ng-controller = "childcontroller">
+                  <button ng-click="$emit('myevent')" >$emit('myevent')</button>
+                  <button ng-click="$broadcast('myevent')" >$broadcastevent('myevent')</button>
+                   middle scope<tt> myevent</tt>count :{{count}}
+                    <div ng-controller = "grandchildcontroller">
+                      leaf scope<tt> myevent</tt>count :{{count}}
+                    </div>
+             </div>
+        </div>
+    </body>
+</html>

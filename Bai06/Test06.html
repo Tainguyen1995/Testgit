@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Hello world</title>
+        <script src="../libraries/scripts/1.6.4/angular.min.js"></script>
+            <script src="Test06.js"></script>
+    </head>
+    <body ng-app="form-example">
+        <div ng-controller = "Controller">
+            <form name="form" class="css-form" novalidate>
+               name:
+                <input type="text" ng-model = "user.name" name="uName" required /><br>
+                Email:
+                <input type="email" ng-model = "user.email" name="uemail" required /><br>
+                <div ng-show = "form.uemail.$dirty && form.uemail.$invalid"> Invalid:
+                    <span ng-show = "form.uemail.$error.required"> tell us your mail.</span>
+                    <span ng-show = "form.uemail.$error.email">this is not a value email.</span>
+                </div>
+                  Gender:<input type="radio" ng-model="user.gender" value="male"/>male
+                <input type="radio" ng-model="user.gender" value="female"/>female<br/>
+                <input type="checkbox" ng-model="user.agree"   value="userAgree" required/>
+            I agree: <input ng-show="user.agree" type="text" ng-model="user.agreeSign" required/><br/>
+            <div ng-show="!user.agree || !user.agreeSign">Please agree ang sign.</div>
+            <button ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
+            <button ng-click="update(user)" ng-disabled="form.$invalid || isUnchanged(user)">SAVE</button>
+
+            </form>
+        </div>
+        
+               <style type="text/css">
+        .css-form input.ng-invalid.ng-dirty{
+            background-color: #FA787E;
+        }
+        .css-form input.ng-valid.ng-dirty{
+            background-color: #78FA89;
+        }
+    
+    
+        </style>
+    </body>
+</html>
